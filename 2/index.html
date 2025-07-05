@@ -1,0 +1,55 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Module 2: HTML basics</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            p {
+                /* Internal CSS is green. */
+                color: #0f0;
+            }
+        </style>
+    </head>
+    <body>
+    <!--
+        This is an example of a comment.  Module 2 requires the following elements:
+
+        .html - doctype, html, head, body, title, p, h2, comment
+        .css - font-family, color, comment, cascading - external, internal (embedded), in-line
+        ordered lists with 2 different numbering, un-numbered lists with 2 different bullet types (hint: use list-style-type),
+        nested lists
+    -->
+        <h2>This is an example of the h2 element, which should only be affected by external CSS and be red.</h2>
+        <p>This is an example of a paragraph using the <i>P</i> element, which should use the internal CSS sheet and be green.</p>
+        <p style="color: #00f;">This paragraph uses in-line CSS, which should be blue.</p>
+        <ol>
+            <li>First item in an ordered list</li>
+            <li>Second item in an ordered list</li>
+        </ol>
+        <!--
+        This uses the list-style-type CSS style to change the list item markers.
+        See https://www.w3.org/TR/CSS2/generate.html#propdef-list-style-type
+        -->
+        <ol style="list-style-type: upper-alpha;">
+            <li>First item in an ordered list with a different numbering style</li>
+            <li>Second item in an ordered list with a different numbering style</li>
+        </ol>
+        <ul>
+            <li>First item in an un-numbered list</li>
+            <li>Second item in an un-numbered list</li>
+        </ul>
+        <ul style="list-style-type: square;">
+            <li>First item in an un-numbered list with a different bullet type</li>
+            <li>Second item in an un-numbered list with a different bullet type</li>
+        </ul>
+        <ul>
+            <li>First item in a nested list
+                <ul>
+                    <li>First item in a nested un-numbered list</li>
+                    <li>Second item in a nested un-numbered list</li>
+                </ul>
+            </li>
+            <li>Second item in a nested list</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+/*
+This is a CSS comment!
+
+.css - font-family,
+color, comment, cascading - external, internal (embedded), in-line
+*/
+
+body * {
+    /* External CSS is red. */
+    color: #f00;
+}
