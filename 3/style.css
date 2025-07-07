@@ -1,0 +1,14 @@
+/* Set the background color to white. */
+body {
+    background-color: #ffffff;
+}
+
+/* Visited links */
+a:visited {
+    color: #800080; /* Purple */
+}
+
+/* Mouse hovering over a link */
+a:hover {
+    color: #ff0000; /* Red */
+}
