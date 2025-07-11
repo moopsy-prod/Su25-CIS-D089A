@@ -4,6 +4,13 @@
     <title>Module 3</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // This script sets the title attribute of each link to its inner text for DRY purposes.
+        // This is useful for accessibility and provides additional context when hovering over links.
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("A").foreach((a) => { a.title = a.innerText; });
+        });
+    </script>
 </head>
 <body>
     <!-- Invisible span anchor -->
