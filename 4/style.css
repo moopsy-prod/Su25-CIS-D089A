@@ -1,0 +1,21 @@
+body {
+    /* Set the background color. */
+    background-color: #ffffff;
+}
+
+img {
+    /* Frames the image nicely with a border. */
+    border: thin solid black;
+    /* Add some spacing around each image. */
+    padding: 10px;
+}
+
+img.float-right {
+    /* Float the image to the right of the text. */
+    float: right;
+}
+
+ul {
+    /* Use a picture of an apple for the bullet points of the list. */
+    list-style-image: url('apple2.png');
+}

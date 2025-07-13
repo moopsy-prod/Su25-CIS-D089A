@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Module 4</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--
+        Rubric:
+        Basic images,
+        image file types labeled in user view.
+        Additional image attributes -
+        link,
+        alt text,
+        size.
+        Align image in text,
+        image border,
+        spacing.
+        Custom bullet list-style-image
+
+        Media - audio, video
+
+        Basic HTML, .css, comments
+
+        Also assignment text:
+
+        3 types of images - jpg, png, gif
+        resize image (thumbnail) that is also a link to the full size source image
+        captions, alternate text
+        position an image next text
+
+        sound file, video file, player controls
+
+        customized bullets / markers (list-style-image), reference online resources list-style-image. .css - list-style-type
+        Select one of these icons to use for list-style-image property. Example of the code with a link to an external image
+        ul {
+        list-style-image: url("https://cdn0.iconfinder.com/data/icons/typicons-2/24/star-64.png");
+        }
+
+
+        Assignment text:
+        Media - images, audio, video -
+        In a new project, use the coding project elements, attributes and
+        properties to include images and play audio and video selections.
+        Find examples of media - images, videos and sound files that are
+        licensed through the Creative Commons so that you can include them
+        in your web page. Make viewer controls visible. Use all the elements,
+        attributes and properties within your page. Include some descriptive
+        information so the viewer knows what is being demonstrated within your
+        page. Also, use comments in your HTML code to indicate what you are
+        doing.
+        -->
+        <!-- 3 different kinds of images: gif, jpg, and png -->
+        <p>A gif image.</p>
+        <A href="luna.gif">
+            <figure>
+                <img src="luna.gif" alt="Luna the cat yawning" title="Luna the cat yawning" width="360" height="240"/>
+                <figcaption>Luna the cat yawning</figcaption>
+            </figure>
+        </A>
+        <!-- These two images are thumbnails that will take you to the full size image if you click on them. -->
+        <p>A jpg image.  Click on the image to see the full size version.</p>
+        <A href="luna2.jpg">
+            <figure>
+                <img src="luna2-thumbnail.jpg" alt="Luna the cat laying on a laptop" title="Luna the cat laying on a laptop" width="408" height="306" />
+                <figcaption>Luna the cat laying on a laptop</figcaption>
+            </figure>
+        </A>
+        <p>A png image.  Click on the image to see the full size version.  This image is floated to the right of this text below.</p>
+        <A href="luna3.png">
+            <figure>
+                <img class="float-right" src="luna3-thumbnail.png" alt="Luna the cat looking at the camera" title="Luna the cat looking at the camera" width="306" height="408" />
+            <figcaption>Luna the cat looking at the camera</figcaption>
+            </figure>
+        </A>
+        <p>More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text More text </p>
+        <!-- A video, with controls -->
+        <p>Here is a video of Mariah Carey escaping containment.</p>
+        <video src="akira.mp4" controls></video>
+
+        <!-- This list has a custom list image defined in the CSS file. -->
+        <p>Here is a list with images used for bullet points.</p>
+        <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+
+    </body>
+</html>
