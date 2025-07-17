@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <title>Module 5</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+<!--
+    Rubric:
+    Styling - paragraph,
+    heading,
+    background.
+    Text style - font,
+        size,
+        color,
+        align.
+    Advanced -
+        font-family,
+        font-variant. .class selector
+
+        transform,
+        transition,
+        animation
+
+    Basic html, css, comments
+
+    Assignment description:
+    Coding project required elements
+
+    text formatting,
+    include additional font families
+    use css .class selector,
+    ID,
+    div
+    demonstrate transitions,
+    transformations,
+    animations
+    error free coding,
+    css for styling,
+    comments in html and css code
+
+    Resources: For this and other modules look for resources in ALL media types
+     - video, audio, illustrations as well as text. If you prefer to learn from
+    resources other than text, that is fine. Find and post resources that YOU prefer.
+
+    Activity description:
+    * In a new coding project, demonstrate requirements using all the
+    appropriate elements and property tags within your project. For this coding
+    project - Make your styling really visible. Make it standout so it is clear
+    what you have added.
+    * In the top portion of your project page, include some text and images
+    without any styling, just using the browsers defaults.
+    * In the bottom portion of your project page, add the same text and images
+    and add styling using style coding in your css file.
+
+    Some browsers and user preferences may not display your styling. It is
+    helpful to include information about the requirement being demonstrated
+    in the page display as well as in the comments.
+-->
+
+        <h1>Module 5 Project</h1>
+        <!-- The unstyled content. -->
+        <h2>Unstyled content</h2>
+        <p>This is a paragraph without any styling.</p>
+        <img src="../4/luna2-thumbnail.jpg" alt="Luna the cat laying on a laptop" width="408" height="306" />
+
+        <!-- The styled content. -->
+        <div>
+            <h2>Styled Content</h2>
+            <p class="styled-paragraph">This is a paragraph with styling applied. The text is larger, has a different font, and is centered.</p>
+        </div>
+
+        <div class="styled-div">
+            <h2 class="styled-heading">Styled Heading</h2>
+            <p>Hover over the image to show a CSS transition.</p>
+            <img src="../4/luna2-thumbnail.jpg" alt="Luna the cat laying on a laptop" width="408" height="306" class="styled-image" />
+        </div>
+        <div class="advanced-styled-div">
+            <div class="styled-div">
+            <p>Font-family and font-variant is being demonstrated here with a
+                3d rotation applied to make it look like star wars
+                introductory scroll text.  Hover over the hexagon to animate it.
+            </p>
+            </div>
+            <!-- A simple SVG of a solid purple hexagon -->
+             <div class="animated">
+            <svg width="100" height="100">
+                <style>
+                    .hexagon {
+                        fill: purple;
+                    }
+                </style>
+                <polygon points="50,0 100,25 100,75 50,100 0,75 0,25" class="hexagon" />
+            </svg>
+            </div>
+        </div>
+    </body>
+</html>

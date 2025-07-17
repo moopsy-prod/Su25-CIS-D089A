@@ -1,0 +1,63 @@
+body {
+    background-color: #000000;
+}
+
+/*
+    Text style - font,
+        size,
+        color,
+        align.
+*/
+.styled-paragraph {
+    font-size: 18px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #00ff00;
+    text-align: center;
+}
+
+.styled-div {
+    border: thin solid red;
+    padding: 20px;
+}
+.styled-div h2 {
+    color: #00ff00;
+}
+.styled-div img:hover {
+    /* Animate the image so it fades in and out. */
+    transition: opacity 2s ease-in-out;
+    opacity: 0.5;
+
+}
+
+/*     Advanced -
+        font-family,
+        font-variant. .class selector
+
+        transform,
+        transition,
+        animation
+*/
+.advanced-styled-div {
+    border: 2px solid #ff0000;
+    /* Center the div so the 3d rotation doesn't cause the div to spill off the edge of the viewport. */
+    margin: 0 auto;
+    width: 30vmin;
+
+    padding: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-variant: small-caps;
+    /* Rotate the div so it looks like star wars credits */
+    transform-style: preserve-3d;
+    transform: perspective(300px) rotateX(30deg);
+}
+
+/* Animate this text when mouse hovers over it */
+
+@keyframes slide-back-and-forth {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(100px); }
+    100% { transform: translateX(0); }
+}
+.animated:hover {
+    animation: slide-back-and-forth 2s ease-in-out infinite;
+}
