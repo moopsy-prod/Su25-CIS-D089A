@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Module 6</title>
+</head>
+<body>
+    <h1>Module 6</h1>
+    <!--
+    Rubric:
+     Flexbox,
+     Float,
+     padding,
+     margin,
+     border,
+     text
+
+     Basic html, css, comments
+
+    Assignment requirements:
+    floating,
+    positioning,
+     text,
+     images,
+    padding,
+    margin,border
+    flexbox
+    -->
+
+    <!-- We need some stuff to display to demonstrate CSS layout, so let's make a SVG. -->
+    <div style="display: none;">
+    <svg id="star" >
+        <style>
+            .hexagon {
+                fill: purple;
+            }
+        </style>
+        <polygon points="50,0 100,25 100,75 50,100 0,75 0,25" class="hexagon" />
+    </svg>
+    </div>
+
+    <!-- Flexbox layout, horizontal. -->
+    <p>Flexbox layout, horizontal.</p>
+    <div class="flex-container-row">
+        <div class="flex-item"><svg><use href="#star"></use></svg></div>
+        <div class="flex-item"><svg><use href="#star"></use></svg></div>
+        <div class="flex-item"><svg><use href="#star"></use></svg></div>
+    </div>
+
+    <!-- Flexbox layout, vertical. -->
+    <p>Flexbox layout, vertical.</p>
+    <div class="flex-container-column">
+        <div class="flex-item"><svg><use href="#star"></use></svg></div>
+        <div class="flex-item"><svg><use href="#star"></use></svg></div>
+        <div class="flex-item"><svg><use href="#star"></use></svg></div>
+    </div>
+
+    <!-- Floating elements. -->
+    <p>Floating elements.</p>
+    <div class="float-container">
+        <p>blah blah some text here which the floating item will be to the right of</p><div class="float-item"><svg><use href="#star"></use></svg></div>
+    </div>
+
+    <!-- Padding, border, and margin illustration. -->
+    <p>Padding, border, and margin illustration.  Note the 10px padding distance between this text and the beginning of the interior border.</p>
+    <!-- This special div causes the padding and margin to be different colors. -->
+    <div class="padding-border-margin">
+        <p>This paragraph has a 5px padding between it and the border.  There is also 10px margin between the border and the outside div.</p>
+        <p>Another paragraph to show how padding, border, and margin work.</p>
+    </div>
+
+    <!-- Positioning. -->
+    <p>Positioning elements are at the top and right of this page, although they're defined in the DOM below this text.</p>
+    <div class="positioning-container-absolute">This item is positioned absolutely on top of the outer div.</div>
+    <div class="positioning-container-fixed">This item will always be in the upper right-hand corner of the viewport.</div>
+    <p>End of definition of the positioning elements.</p>
+</body>
+</html>
