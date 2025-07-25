@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="CSS, grid layout, media queries, responsive design">
+    <meta name="description" content="An example of a CSS grid layout with media queries">
+    <link rel="stylesheet" href="style.css">
+    <title>Module 7</title>
+</head>
+<body>
+    <header>
+        <h1>Module 7</h1>
+    </header>
+    <!--
+    Rubric:
+
+    grid layout
+    include one or more of the techniques for altering the page display for different devices - smartphone, tablet and desktop
+    head, title, keywords, description, image
+    comments in html and css
+
+    -->
+
+    <!-- Light and dark mode detection -->
+    <div class="dark-mode-only">
+        <p>Your browser has dark mode enabled!</p>
+    </div>
+
+    <div class="light-mode-only">
+        <p>Your browser has light mode enabled!</p>
+    </div>
+
+    <!-- CSS grid layout -->
+     <h2>CSS grid layout example, column widths are 50%, 25%, 15%, and 10%.</h2>
+    <div class="grid-container">
+        <div class="grid-item">50%</div>
+        <div class="grid-item">25%</div>
+        <div class="grid-item">15%</div>
+        <div class="grid-item">10%</div>
+    </div>
+
+    <!-- Media query for screen -->
+    <div class="screen-only">
+        <p>
+            This content is only visible on screens larger than 600px.  There is also another
+            screen-only CSS grid example below which uses images.
+        </p>
+        <div class="grid-container">
+            <div class="grid-item"><img src="screen.jpg" height="100" width="100"></div>
+            <div class="grid-item"><img src="screen.jpg" height="100" width="100"></div>
+            <div class="grid-item"><img src="screen.jpg" height="100" width="100"></div>
+            <div class="grid-item"><img src="screen.jpg" height="100" width="100"></div>
+        </div>
+        <p>
+            There is also another div below which will only appear when this page is printed.
+        </p>
+    </div>
+
+    <!-- Media query for print -->
+    <div class="print-only">
+        <p>
+            This content is only visible when printed.<br/>
+            There is also a div above which will only appear on screens larger than 600px.
+            The below CSS grid example uses images which only appear when this page is printed.
+        </p>
+        <div class="grid-container">
+            <div class="grid-item"><img src="print.jpg" height="100" width="100"></div>
+            <div class="grid-item"><img src="print.jpg" height="100" width="100"></div>
+            <div class="grid-item"><img src="print.jpg" height="100" width="100"></div>
+            <div class="grid-item"><img src="print.jpg" height="100" width="100"></div>
+        </div>
+    </div>
+</body>
+</html>

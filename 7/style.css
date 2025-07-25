@@ -1,0 +1,54 @@
+body {
+    background-color: #0f0f0f;
+}
+
+/* CSS grid layout examples */
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 25% 15% 10%;
+}
+.grid-item {
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: thin solid blue;
+}
+
+/* Media query for screen */
+@media screen and (min-width: 600px) {
+    .screen-only {
+        display: block;
+    }
+    .print-only {
+        display: none;
+    }
+}
+
+/* Media query for print */
+@media print {
+    .print-only {
+        display: block;
+    }
+    .screen-only {
+        display: none;
+    }
+}
+
+/* Media query for dark mode */
+@media screen and (prefers-color-scheme: dark) {
+    .dark-mode-only {
+        display: block;
+    }
+    .light-mode-only {
+        display: none;
+    }
+}
+
+/* Media query for light mode */
+@media screen and (prefers-color-scheme: light) {
+    .light-mode-only {
+        display: block;
+    }
+    .dark-mode-only {
+        display: none;
+    }
+}
