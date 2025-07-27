@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Module 8</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Module 8</h1>
+        <!--
+        Rubric:
+        Basic table tags - 
+            rows,
+            columns,
+            heading,
+            formatting,
+            align,
+            spacing.
+            Spanning examples - 
+                rows,
+                columns.
+                Tic Tac Toe
+	
+        Basic HTML, .css, comments
+	
+        Basic field types
+
+        Assignment:
+        
+        table rows, columns, headings, borders, padding
+
+        span rows, span columns
+
+        position text within table cells, position images in table cells
+
+        tic-tac-toe - 3x3 table with X and O characters centered in the cells
+        like they would appear in the game. This is a static display (not
+        interactive).
+        
+        input form, text box, checkbox, pull down menus, prefilled entries,
+        color selector, meter, submit button with action=mailto
+        -->
+        <p>Basic table tags: red headings, green inner cells.</p>
+        <table>
+            <!-- Table rows -->
+            <!-- Table headings -->
+            <thead>
+                <tr>
+                    <th>Heading column 1</th>
+                    <th>Heading column 2</th>
+                    <th>Heading column 3</th>
+                </tr>
+            </thead>
+            <!-- Regular table cells -->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="tr-right-justified">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="tr-huge-spacing">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">Double-width column </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="2">Double-height row </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p>Images in tables.</p>
+        <!-- We're going to define a little SVG that spins slowly and includes the DeAnza SVG logo at https://deanza.edu/_resources/images/deanza_logo.svg -->
+        <div class="svg-template">
+            <svg id="deanza-logo-svg">
+                <image class="deanza-logo" href="https://deanza.edu/_resources/images/deanza_logo.svg" />
+            </svg>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Heading column 1</th>
+                    <th>Heading column 2</th>
+                    <th>Heading column 3</th>
+                </tr>                
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- include the svg from earlier -->
+                    <td><svg><use href="#deanza-logo-svg"></use></svg></td>
+                    <td><svg><use href="#deanza-logo-svg"></use></svg></td>
+                    <td><svg><use href="#deanza-logo-svg"></use></svg></td>
+                </tr>
+                <tr class="tr-right-justified">
+                    <td><svg><use href="#deanza-logo-svg"></use></svg></td>
+                    <td><svg><use href="#deanza-logo-svg"></use></svg></td>
+                    <td><svg><use href="#deanza-logo-svg"></use></svg></td>
+                </tr>
+            </tbody>
+        </table>
+    <!-- Tic tac toe! -->
+        <!--
+            tic-tac-toe - 3x3 table with X and O characters centered in the cells
+            like they would appear in the game. This is a static display (not
+            interactive).
+        -->
+
+        <p>Tic Tac Toe</p>
+        <table class="tic-tac-toe">
+            <tr>
+                <td>X</td>
+                <td>O</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>X</td>
+                <td>O</td>
+            </tr>
+            <tr>
+                <td>X</td>
+                <td>O</td>
+                <td>X</td>
+            </tr>
+        </table>
+    <!-- Forms. -->
+     <!--    input form, text box, checkbox, pull down menus, prefilled entries,
+        color selector, meter, submit button with action=mailto -->
+    <p>Forms</p>
+    <!-- Input form. -->
+    <div class="form-output"></div>
+    <p>Enter text below and hit enter to append it to the div above.</p>
+    
+    <!-- Set a submit handler that appends the text to the div above.-->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.input-form');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const input = document.querySelector('input[name="input"]');
+                const output = document.querySelector('.form-output');
+                output.innerHTML += `<p>${input.value}</p>`;
+                input.value = '';
+            });
+        });
+    </script>
+    <form class="input-form">
+        <label for="input">Input:</label>
+        <!-- Input text box. -->
+        <input type="text" name="input" />
+    </form>
+
+    <!-- Checkbox form. -->
+    <form>
+        <label for="checkbox">Checkbox:</label>
+        <!-- Checkbox. -->
+        <input class="checkbox" type="checkbox" name="checkbox" />
+        <!-- Span to show state of checkbox. -->
+        <span class="checkbox-counter"></span>
+    </form>
+
+    <!-- Pull-down menus (combo box). -->
+    <!-- Script to set the global font-family based on this selection element. -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const combo = document.querySelector('.combo');
+            combo.addEventListener('change', (event) => {
+                document.body.style.fontFamily = event.target.value;
+            });
+        });
+    </script>
+    <form>
+        <label for="combo">Select a font:</label>
+        <!-- Combo box. -->
+        <select class="combo" name="combo">
+            <option value="Sans-serif">Sans-serif</option>
+            <option value="Monospace">Monospace</option>
+            <option value="Times New Roman">Times New Roman</option>
+        </select>
+    </form>
+
+    <!-- Prefilled entries. -->
+    <form>
+        <label for="prefilled">Prefilled input:</label>
+        <!-- Prefilled input text box. -->
+        <input type="text" name="prefilled" value="Prefilled text" />
+    </form>
+
+    <!-- Color selector. -->
+    <!-- Script to set the global text color based on this color picker. -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colorInput = document.querySelector('input[type="color"]');
+            colorInput.addEventListener('input', (event) => {
+                document.body.style.color = event.target.value;
+            });
+        });
+    </script>
+    <form>
+        <label for="color">Select a color:</label>
+        <!-- Color selector. -->
+        <input type="color" name="color" value="#ff0000" />
+    </form>
+
+    <!-- Meter. -->
+    <!-- Script to update the meter value dynamically. -->
+    <script>
+        let meter = 0.5; // Initial value for the meter
+        function update() {
+            meter += 0.01; // Increment the meter value
+            if (meter > 1) {
+                meter = 0; // Reset if it exceeds 1
+            }
+            const meterElement = document.querySelector('.meter');
+            meterElement.value = meter; // Update the meter value
+            const meterValue = document.querySelector('.meter-value');
+            meterValueString = (meter * 100).toFixed(0); // Convert to percentage
+            meterValue.textContent = `${meterValueString}%`;
+            requestAnimationFrame(update); // Call update again for the next frame
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            update();
+        });
+    </script>
+    <form>
+        <label for="meter">Meter:</label>
+        <!-- Meter to show progress. -->
+        <meter class="meter" value="0.5" min="0" max="1"></meter>
+        <span class="meter-value">50%</span>
+    </form>
+
+    <!-- Submit button with action=mailto. -->
+    <form action="mailto:spencejason@students.deanza.edu" method="post" enctype="text/plain">
+        <label for="email">Email:</label>
+        <!-- Input text box for email. -->
+        <textarea name="email" rows="4" placeholder="Enter your message here..."></textarea>
+        <label for="submit">Submit:</label>
+        <!-- Submit button. -->
+        <input type="submit" name="submit" value="Submit" />
+    </body>
+</html>

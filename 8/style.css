@@ -1,0 +1,130 @@
+/* Dark mode/light mode colors */
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background: #333333;
+        color: #ffffff;
+    }
+}
+@media screen and (prefers-color-scheme: light) {
+    body {
+        background-color: #cccccc;
+        color: #000000;
+    }
+}
+
+/* Table borders. */
+table {
+    border: thick solid black;
+    border-collapse: separate;
+}
+
+/* I have no idea why this doesn't work on table rows unless the outer table element has border-collapse: collapse set. */
+tr {
+    border: 20px solid blue;
+}
+
+table tr th {
+    border: thick solid red;
+}
+
+table tr td {
+    border: thick solid green;
+}
+
+/* I didn't feel like typing in all the cell addresses, so I used CSS counters. */
+tr {
+    counter-increment: row;
+    counter-reset: col;
+}
+td {
+    counter-increment: col;
+    content: counter(col);
+}
+td::after {
+    content: "(" counter(row) ", " counter(col) ")";
+}
+
+/* Right justified table cells. */
+.tr-right-justified * {
+    text-align: right;
+}
+
+.tr-right-justified td::before {
+    content: "Right justified ";
+}
+
+/* Huge spacing around table cells. */
+.tr-huge-spacing td {
+    padding: 20px;
+}
+.tr-huge-spacing td::before {
+    content: "Huge padding  ";
+}
+
+.tr-right-justified td > svg {
+    /* I have no idea why auto doesn't work here to right-justify the SVG. */
+    margin-left: calc(100% - 100px);
+    margin-right: 0;
+}
+
+/* Set all the SVGs to a fixed size. */
+svg {
+    width: 100px;
+    height: 100px;
+}
+
+/* Template SVGs aren't displayed. */
+.svg-template {
+    display: none;
+}
+
+/* DeAnza logo spinning animation. */
+.deanza-logo {
+    width: 100px;
+    height: 100px;
+    animation: spin 20s linear infinite;
+}
+@keyframes spin {
+    from { 
+        transform: rotate(0deg);
+        transform-origin: center;
+    }
+    to { 
+        transform: rotate(360deg); 
+        transform-origin: center;
+    }
+}
+
+/* Tic-tac-toe styles */
+.tic-tac-toe {
+    text-align: center;
+    /* Vertically center the X and O characters in the cells. */
+    vertical-align: middle;
+    /* Set the width and height of the table cells to make it square. */
+    width: 30vmin;
+    height: 30vmin;
+}
+/* Turn off cell coordinates in tic-tac-toe. */
+.tic-tac-toe *::after {
+    content: none;
+}
+
+/* Counter for checked checkboxes */
+/* Initialize counter at root */
+:root {
+  counter-reset: checked-counter;
+}
+/* Increment counter for each checked checkbox */
+input[type="checkbox"]:checked {
+  counter-set: checked-counter 1;
+}
+/* Increment it when it's not checked */
+input[type="checkbox"]:not(:checked) {
+  counter-set: checked-counter 0;
+}
+/* Display counter value after the .checked-count element */
+span.checkbox-counter::before {
+  content: counter(checked-counter);
+}
+
+
