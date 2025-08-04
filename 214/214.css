@@ -1,0 +1,168 @@
+/* Dark mode/light mode colors */
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background: #333333;
+        color: #ffffff;
+    }
+}
+@media screen and (prefers-color-scheme: light) {
+    body {
+        background-color: #cccccc;
+        color: #000000;
+    }
+}
+
+/* Spinning cube keyframe definition for animation. */
+@keyframes cube {
+    0% {
+        transform: rotateY(0deg);
+    }
+/*
+    50% {
+        transform: rotateY(20deg);
+    }
+*/
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes spinX {
+    0% {
+        -transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        transform: rotateY(0deg);
+        -transform-origin: center center;
+    }
+    100% {
+        -transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
+        transform: rotateY(360deg);
+        -transform-origin: center center;
+    }
+}
+
+@keyframes placeLeft {
+    0% {
+        transform: translate(0,0,0) rotateY(0deg);
+    }
+    100% {
+        transform: translateX(calc(-1 * var(--cube-face-translation))) rotateY(-90deg);
+    }
+}
+
+body {
+    --cube-face-size: 50vmin; /* Size of each face of the cube */
+    --cube-face-translation: calc(var(--cube-face-size) / 2); /* Half the size of the cube face */
+}
+
+/* Set up the 3D space */
+.page-wrapper {
+    -perspective: calc(var(--cube-face-size) * 50);
+    perspective: 3000px;
+    --perspective-origin: top left;
+    transform-style: preserve-3d;
+    width: 100vw;
+    height: 100vh;
+    -animation: spinX 20s infinite linear;
+}
+
+/* Debugging element to visualize the page wrapper */
+.debug {
+    position: fixed;
+    left: 0;
+    top: 0;
+    border: thin solid black;
+}
+.debug:hover + div.page-wrapper {
+    animation: spinX 20s infinite linear;
+}
+
+.face {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2);
+    left: calc((100vmin - var(--cube-face-size)) / 2);
+    display: block;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 10vmin;
+    text-align: center;
+    align-items: center;
+}
+
+/* Back face of the cube. */
+footer {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2);
+    left: calc((100vmin - var(--cube-face-size)) / 2);
+    transform: translateZ(calc(-1 * var(--cube-face-translation))) rotateY(180deg);
+    background: lightgreen;
+    display: block;
+    opacity: 80%;
+}
+
+/* Front face of the cube. */
+section.intro , .front {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2); 
+    left: calc((100vmin - var(--cube-face-size)) / 2); 
+    transform: translateZ(calc(1 * var(--cube-face-translation))) rotateY(0deg);
+    background: lightcoral;
+    opacity: 50%;
+}
+
+/* Left face of the cube. */
+#zen-explanation, .left {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2); 
+    left: calc((100vmin - var(--cube-face-size)) / 2); 
+    -transform: translateX(calc(-1 * var(--cube-face-translation))) rotateY(90deg);
+    background: lightyellow;
+    animation: placeLeft 5s 2 linear;
+}
+
+/* Right face of the cube. */eeeeee
+.requirements , .right {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2); 
+    left: calc((100vmin - var(--cube-face-size)) / 2); 
+    transform: translateX(calc(1 * var(--cube-face-translation))) rotateY(90deg);
+    background: lightpink;
+}
+
+/* Top face of the cube. */
+.participation , .top {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2); 
+    left: calc((100vmin - var(--cube-face-size)) / 2); 
+    transform: translateY(calc(-1 * var(--cube-face-translation))) rotateX(90deg);
+    background: lightgray;
+}
+
+/* Bottom face of the cube. */
+.benefits , .bottom {
+    width: var(--cube-face-size);
+    height: var(--cube-face-size);
+    position: absolute;
+    top: calc((100vmin - var(--cube-face-size)) / 2); 
+    left: calc((100vmin - var(--cube-face-size)) / 2); 
+    transform: translateY(calc(1 * var(--cube-face-translation))) rotateX(-90deg);
+    background: lightcyan;
+}
+
+.sidebar {
+    position: fixed;
+    right: 0;
+
+    top: 0;
+}
+
