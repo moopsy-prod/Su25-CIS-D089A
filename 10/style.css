@@ -1,0 +1,132 @@
+/* Global definitions */
+:root {
+    --font-section: "Montserrat", sans-serif;
+    --font-header: "Italianno", cursive;
+    --font-comic: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+}
+
+@media (prefers-color-scheme: light) { 
+    :root {
+        background: #cccccc;
+        --text-color: #4A4844; /* Darkened ivory for light mode */
+        --shadow-color1: rgba(48, 60, 70, 0.5); /* Darker blue-gray glow */
+        --shadow-color2: rgba(60, 75, 90, 0.3); /* Darker subtle point shadow */
+        --gradient-end: #7d8294; /* Darkened gradient start */
+        --gradient-start: #202830; /* Darkened gradient end */
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        background: #333333;
+        --text-color: #F5F2EB; /* Creamy ivory for dark mode */
+        --shadow-color1: rgba(107, 130, 153, 0.5); /* Blue-gray glow */
+        --shadow-color2: rgba(139, 161, 184, 0.3); /* Subtle point shadow */
+        --gradient-start: #F5F2EB; /* Gradient start for sheen */
+        --gradient-end: #8593a3; /* Gradient end for sheen */
+    }
+}
+
+@keyframes -shimmer {
+    0% {
+        background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+    }
+    50% {
+        -background: linear-gradient(145deg, var(--gradient-end), var(--gradient-start));
+        background: #ff0000;
+        color: #ff0000;
+    }
+    100% {
+        background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+    }
+}
+
+/* Test div to do sanity checks */
+@keyframes shimmer {
+    0% {
+        color: green;
+    }
+    50% {
+        color: red;
+    }
+    100% {
+        color: green;
+    }
+}
+
+.test {
+    animation: shimmer 1s infinite;
+    display: none;
+}
+
+/* Fallback to catch unstyled content. */
+body * {
+    font-family: var(--font-unstyled);
+    font-size: 16px;
+    border: thick solid red;
+    background: none !important;
+}
+
+/* Remove fallback styling from main structure elements */
+html, body, main, section, div, ul, li, header {
+    border: none;
+}
+
+section {
+    font-family: var(--font-section);
+    font-weight: 400;
+    font-style: normal;
+    border: none;
+    padding: 5px;
+    background: none;
+}
+
+/* Common animated gradient text effect */
+section p, section a, section strong, section li {
+    font-family: var(--font-section);
+    border: none;
+    text-shadow: 0 0 2px var(--shadow-color1), 0 0 4px var(--shadow-color2);
+    background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end)) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Specific adjustments for individual elements */
+section p {
+    font-weight: 400;
+    font-style: normal;
+}
+
+section a {
+    text-decoration: underline;
+}
+
+/* Common header styling */
+header, header h1, section h2, section h3, section h4, section h5, section h6 {
+    font-family: var(--font-header);
+    font-stretch: 170%;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5em;
+    text-align: center;
+    text-shadow: 0 0 5px var(--shadow-color1), 0 0 10px var(--shadow-color2);
+    color: var(--text-color);
+    border: none;
+    background: none;
+}
+
+/* Section headers need extra specificity to override other rules */
+section h2, section h3, section h4, section h5, section h6 {
+    text-shadow: 0 0 2px var(--shadow-color1), 0 0 4px var(--shadow-color2);
+    color: var(--text-color) !important;
+    border: none !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--text-color) !important;
+}
+
+/* Ensure containers have no background */
+section ul {
+    background: none !important;
+    border: none !important;
+}
