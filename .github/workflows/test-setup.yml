@@ -1,0 +1,99 @@
+name: Windows Setup Regression Tests
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "setup.ps1"
+      - "tests/**"
+      - ".github/workflows/test-setup.yml"
+  pull_request:
+    branches: ["**"]
+    paths:
+      - "setup.ps1"
+      - "tests/**"
+      - ".github/workflows/test-setup.yml"
+  workflow_dispatch:
+
+jobs:
+  regression-test:
+    # Windows 11 Pro hosted runner
+    runs-on: windows-11-pro
+    permissions:
+      contents: read
+
+    steps:
+      # -----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # -----------------------------------------------------------------------
+      - name: Validate setup.ps1 syntax
+        shell: pwsh
+        run: |
+          $parseErrors = $null
+          $null = [System.Management.Automation.Language.Parser]::ParseFile(
+              "${{ github.workspace }}\setup.ps1",
+              [ref]$null,
+              [ref]$parseErrors
+          )
+          if ($parseErrors.Count -gt 0) {
+              $parseErrors | ForEach-Object { Write-Error $_.Message }
+              exit 1
+          }
+          Write-Host "setup.ps1 syntax OK"
+
+      # -----------------------------------------------------------------------
+      - name: Install Pester 5
+        shell: pwsh
+        run: |
+          Install-Module -Name Pester -MinimumVersion 5.0.0 -Force -SkipPublisherCheck
+          Import-Module Pester
+
+      # -----------------------------------------------------------------------
+      - name: Apply RDP configuration
+        shell: pwsh
+        run: |
+          Set-ItemProperty `
+              -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' `
+              -Name 'fDenyTSConnections' -Value 0
+          Set-ItemProperty `
+              -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP\' `
+              -Name 'UserAuthentication' -Value 1
+          Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'
+          Write-Host "RDP configuration applied"
+
+      # -----------------------------------------------------------------------
+      - name: Apply dark mode
+        shell: pwsh
+        run: |
+          @('AppsUseLightTheme', 'SystemUsesLightTheme') | ForEach-Object {
+              Set-ItemProperty `
+                  -Path 'HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize' `
+                  -Name $_ -Value 0
+          }
+          # Restart Explorer so the theme is applied visually
+          Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue
+          Start-Process explorer
+          Start-Sleep -Seconds 4
+          Write-Host "Dark mode applied"
+
+      # -----------------------------------------------------------------------
+      - name: Run Pester regression tests
+        shell: pwsh
+        run: |
+          $config = New-PesterConfiguration
+          $config.Run.Path               = "${{ github.workspace }}\tests\setup.Tests.ps1"
+          $config.Output.Verbosity       = 'Detailed'
+          $config.TestResult.Enabled     = $true
+          $config.TestResult.OutputPath  = "${{ github.workspace }}\test-results.xml"
+          $config.Run.Exit               = $true
+          Invoke-Pester -Configuration $config
+
+      # -----------------------------------------------------------------------
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pester-test-results
+          path: test-results.xml
